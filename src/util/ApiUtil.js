@@ -1,7 +1,7 @@
 const CHAT_SERVICE = "http://192.168.1.78:8080";
 
-export function baseUrl() {
-  return CHAT_SERVICE;
+export function urlWebSocket(accessToken) {
+  return CHAT_SERVICE + "/web-socket?access_token=" + accessToken;
 }
 const request = (options) => {
   const headers = new Headers();

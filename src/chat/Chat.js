@@ -7,7 +7,7 @@ import {
   countNewMessages,
   findAllChatMessages,
   findChatMessageById,
-  baseUrl,
+  urlWebSocket,
 } from "../util/ApiUtil";
 import { useRecoilValue, useRecoilState } from "recoil";
 import {
@@ -95,7 +95,7 @@ const Chat = (props) => {
   const connect = () => {
     const Stomp = require("stompjs");
     var SockJS = require("sockjs-client");
-    SockJS = new SockJS(baseUrl() + "/ws?access_token=" + localStorage.getItem("accessToken"));
+    SockJS = new SockJS(urlWebSocket(localStorage.getItem("accessToken")));
     stompClient = Stomp.over(SockJS);
     stompClient.connect({}, onConnected, onError);
   };
